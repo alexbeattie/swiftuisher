@@ -58,55 +58,87 @@ struct ContentView: View {
                                             .ignoresSafeArea()
                                             .overlay(alignment: .bottom) {
                                                 VStack {
-                                                    Divider()
-                                                        .padding(.bottom)
+//                                                    Divider()
+//                                                        .padding(.bottom)
                                                     HStack {
-                                                        VStack (alignment: .leading) {
+                                                        Spacer()
+                                                        VStack () {
                                                             Text("$\(listing.ListPrice ?? 0)")
-                                                                .font(.system(size: 14, weight: .semibold))
+                                                                .font(.system(size: 16, weight: .semibold))
                                                                 .foregroundColor(Color(.label))
                                                                 .scaledToFit()
                                                                 .minimumScaleFactor(0.01)
                                                                 .lineLimit(1)
-//                                                            Text("$500")
-//                                                                .foregroundStyle(.black)
-//                                                                .font(.subheadline)
-//                                                            Text("total")
-//                                                                .foregroundStyle(.black)
-//                                                                .font(.footnote)
-//                                                            Text("date")
-//                                                                .foregroundStyle(.black)
-//                                                                .font(.footnote)
+//
                                                             
                                                         }
+//                                                        .padding(.init(top: 8, leading: 8, bottom: 8, trailing: 0))
                                                         Spacer()
+
                                                         
-                                                        Button {
+                                                        VStack () {
+                                                            Text("\(listing.Model ?? "")")
+                                                                .font(.system(size: 16, weight: .semibold))
+                                                                .foregroundColor(Color(.label))
+                                                                .scaledToFit()
+                                                                .minimumScaleFactor(0.01)
+                                                                .lineLimit(1)
+//
                                                             
-                                                        } label: {
-                                                            Text("Reserve")
-                                                                
-                                                                .foregroundStyle(.white)
-                                                                .font(.headline)
-                                                                .frame(width: 140, height: 40)
-                                                                .background(.pink)
-                                                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                                        }
+                                                        }.padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
+                                                        Spacer()
+                                                        VStack {
+                                                                   // Conditional rendering based on listing's MlsStatus
+                                                                   if listing.MlsStatus == "Active" {
+                                                                       Text(listing.MlsStatus ?? "")
+                                                                           .font(.system(size: 16, weight: .semibold))
+                                                                           .foregroundColor(Color(.label)) // Use Color.label for SwiftUI native color
+                                                                           .scaledToFit()
+                                                                           .minimumScaleFactor(0.01)
+                                                                           .lineLimit(1)
+                                                                   } else if listing.MlsStatus == "Pending" {
+                                                                       Text(listing.MlsStatus ?? "")
+                                                                           .font(.system(size: 16, weight: .semibold))
+                                                                           .foregroundColor(Color.red) // Red color for 'Pending' status
+                                                                           .scaledToFit()
+                                                                           .minimumScaleFactor(0.01)
+                                                                           .lineLimit(1)
+                                                                   } else if listing.MlsStatus == "Active Under Contract" {
+                                                                       Text(listing.MlsStatus ?? "")
+                                                                           .font(.system(size: 16, weight: .semibold))
+                                                                           .foregroundColor(Color.red) // Red color for 'Pending' status
+                                                                           .scaledToFit()
+                                                                           .minimumScaleFactor(0.01)
+                                                                           .lineLimit(1)
+                                                                   }
+                                                            
+                                                            
+                                                                else {
+                                                                       // Default view if MlsStatus is neither 'Active' nor 'Pending'
+                                                                       Text(listing.MlsStatus ?? "Unknown Status")
+                                                                           .font(.system(size: 16, weight: .regular))
+                                                                           .foregroundColor(Color.gray)
+                                                                           .scaledToFit()
+                                                                           .minimumScaleFactor(0.01)
+                                                                           .lineLimit(1)
+                                                                   }
+                                                               }
+                                                                    
+                                                                    .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
+                                                        Spacer()
 
                                                     }
-                                                    .padding(.horizontal, 32)
+//                                                    .padding(.horizontal, 32)
                                                 }
-                                                .background(.gray)
+                                                .background(Color.black.opacity(0.5))
+//                                                .background(LinearGradient(
+//                                                    gradient: Gradient(colors: [Color.clear, Color.white]),
+//                                                    startPoint: .bottom, // Start from transparent
+//                                                    endPoint: .top // End at dark
+//                                                )).edgesIgnoringSafeArea(.all) // Extend to the edges if needed
                                             }
-//                                            .overlay(alignment: .bottom) {
-//                                                Text("$\(listing.ListPrice ?? 0)")
-//                                                    .font(.system(size: 14, weight: .semibold))
-//                                                    .foregroundColor(Color(.label))
-//                                                    .scaledToFit()
-//                                                    .minimumScaleFactor(0.01)
-//                                                    .lineLimit(1)
+
 //
-//                                            }
                                         
                                         
                                     } placeholder: {
