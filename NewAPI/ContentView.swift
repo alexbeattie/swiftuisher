@@ -45,16 +45,12 @@ struct ContentView: View {
 //                                  Text("details")
                         } label: {
                             VStack(alignment: .leading) {
-                                
                                 HStack {
-                                    
                                     AsyncImage(url: URL(string: listing.Media?.first?.MediaURL ?? "")) { image in
                                         image
                                             .resizable()
                                             .scaledToFill()
-                                            .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-//                                            .frame(width:400, height:200)
-                                            .clipped()
+                                            .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)                                            .clipped()
                                             .ignoresSafeArea()
                                             .overlay(alignment: .bottom) {
                                                 VStack {
@@ -69,8 +65,6 @@ struct ContentView: View {
                                                                 .scaledToFit()
                                                                 .minimumScaleFactor(0.01)
                                                                 .lineLimit(1)
-//
-                                                            
                                                         }
 //                                                        .padding(.init(top: 8, leading: 8, bottom: 8, trailing: 0))
                                                         Spacer()

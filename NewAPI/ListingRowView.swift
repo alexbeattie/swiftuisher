@@ -14,57 +14,52 @@ struct ListingRowView: View {
     let listing: Value // Assuming `Value` is your data model type
 
     var body: some View {
-//        VStack(alignment: .center) {
-//            Text("$\(listing.ListPrice ?? 0)")
-//                .font(.system(size: 14, weight: .semibold))
+        VStack {
+            HStack(alignment: .bottom, spacing: 8) {
+                HStack() {
+                    Label("\(listing.BedroomsTotal ?? 0) Beds", systemImage: "bed.double")
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundColor(.gray)
+                        
+                }
+                
+                
+                HStack(alignment: .center) {
+                    Label("\(listing.BathroomsTotalInteger ?? 0) Baths", systemImage: "bathtub")
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundColor(.gray)
+                }
+                
+                HStack(alignment: .center) {
+                    Text("\(listing.BuildingAreaTotal ?? 0) sqft")
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundColor(.gray)
+                }
+            }.padding(.horizontal)
+        }
+        VStack(alignment: .leading){
+            HStack() {
+                Text("\(listing.StreetNumber ?? "")")
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundColor(.gray)
+                Text("\(listing.StreetName ?? "")")
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundColor(.gray)
+              
+            }
+            HStack() {
+                Text("\(listing.City ?? ""),")
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundColor(.gray)
+                Text("\(listing.StateOrProvince ?? "")")
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundColor(.gray)
+            }
+//            Text(AttributedString(listing.UnparsedAddress ?? ""))
+//                .font(.system(size: 14, weight: .regular))
 //                .foregroundColor(Color(.label))
-//                .scaledToFit()
 //                .minimumScaleFactor(0.01)
 //                .lineLimit(1)
-////            Text("Price")
-////                .font(.system(size: 14, weight: .regular))
-////                .foregroundColor(.gray)
-//        }
-        HStack(alignment: .bottom) {
-
-            
-            Spacer()
-            
-            VStack(alignment: .center) {
-                Text("\(listing.BedroomsTotal ?? 0)")
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(Color(.label))
-                Label("Beds", systemImage: "bed.double")
-                    .font(.system(size: 14, weight: .regular))
-                    .foregroundColor(.gray)
-            }
-            Spacer()
-            
-            VStack(alignment: .center) {
-                Text("\(listing.BathroomsTotalInteger ?? 0)")
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(Color(.label))
-                Label("Baths", systemImage: "bathtub")
-                    .font(.system(size: 14, weight: .regular))
-                    .foregroundColor(.gray)
-            }
-            Spacer()
-            
-            VStack(alignment: .center) {
-                Text("\(listing.BuildingAreaTotal ?? 0)")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(Color(.label))
-                Text("Sq Feet")
-                    .font(.system(size: 14, weight: .regular))
-                    .foregroundColor(.gray)
-            }
-        }
-        VStack(alignment: .center){
-            Text(AttributedString(listing.UnparsedAddress ?? ""))
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(Color(.label))
-                .minimumScaleFactor(0.01)
-                .lineLimit(1)
         }
         .padding(.horizontal)
     }

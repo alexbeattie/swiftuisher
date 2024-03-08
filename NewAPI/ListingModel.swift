@@ -46,9 +46,9 @@ struct Listing: Codable {
            case value = "value"
        }
 }
-extension Value: Equatable {}
+//extension Value: Equatable {}
 
-struct Value: Codable {
+struct Value: Codable, Equatable, Identifiable {
     static func == (lhs: Value, rhs: Value) -> Bool {
         return lhs.id == rhs.id
     }
@@ -88,9 +88,13 @@ struct Value: Codable {
     var ListingContractDate: Date?
     var ListingId: String?
     var LivingArea: Int?
+    var StreetNumber: String?
+    var StreetSuffix: String?
+    var StreetName: String?
     var formattedLaunchDate: String {
         ListingContractDate?.formatted(date: .abbreviated, time: .omitted) ?? ""
     }
+    
     struct Media: Codable {
         var MediaCategory: String?
         var MediaURL: String?

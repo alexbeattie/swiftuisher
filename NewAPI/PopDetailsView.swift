@@ -102,24 +102,35 @@ struct PopDestDetailsView: View {
             HStack () {
                 
                 VStack (alignment: .leading) {
-                    Link("Website", destination: URL(string: value.first?.ListAgentURL ?? "alex")!)
+//                    Link("Website", destination: URL(string: value.first?.ListAgentURL ?? "alex")!)
+                    
+                    if value.first?.Media?.first?.MediaCategory == "Document" {
+                        
+                        Link("Website", destination: URL(string: value.first?.Media?.first?.MediaURL ?? "")!)
+                        
+                    } else {
+                        
                     }
+                }
+                
 //                  Link("List Agent", destination: URL(string: li ?? "alex")!)
 //                .padding(.horizontal)
             }
 
             VStack (alignment: .leading, spacing: 16) {
+               
+            
                 Text("What this place has to offer")
                     .font(.headline)
-//                ForEach(0 ..< 5) { feature in
+//                ForEach(value.first?.Media ?? [], id: \.MediaKey) { media in // Assuming Media is identifiable by 'MediaKey'
 //                    HStack {
-//                        Image(systemName: "wifi")
-//                            .frame(width:32)
-//                        Text("wifi")
+//                        Image(systemName: "photo") // Change the image as necessary
+//                        Text(media.MediaURL ?? "No URL")
 //                            .font(.footnote)
 //                        Spacer()
 //                    }
 //                }
+
             }
             .padding()
             VStack (alignment: .leading) {
